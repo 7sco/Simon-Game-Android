@@ -134,4 +134,12 @@
         android:layout_height="wrap_content"
         android:text="Start"
         android:layout_gravity=""/>
+
+
+    <TextView
+        android:id="@+id/sequenceText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sequence="
+        android:textAlignment="center"/>
 </LinearLayout>
