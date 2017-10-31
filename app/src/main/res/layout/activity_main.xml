@@ -52,13 +52,15 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Click"
+              android:background="@color/color1Off"
               />
 
           <Button
               android:id="@+id/btn2"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Click"/>
+              android:text="Click"
+              android:background="@color/color2Off"/>
 
 
 
@@ -85,13 +87,15 @@
               android:id="@+id/btn3"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Click"/>
+              android:text="Click"
+              android:background="@color/color3Off"/>
 
           <Button
               android:id="@+id/btn4"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Click"/>
+              android:text="Click"
+              android:background="@color/color4Off"/>
 
 
 
