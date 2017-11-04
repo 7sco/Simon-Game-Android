@@ -123,45 +123,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     //####################  Level Menu  ################
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_levels, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.levelOne:
-
-                //setContentView(R.layout.activity_main);
-                delay-=100;
-
-                //Log.e(TAG, "setting was clicked");
-                break;
-            case R.id.levelTwo:
-
-                //setContentView(R.layout.leveltwo_layout);
-                setContentView(R.layout.bw_theme);
-                break;
-
-            case R.id.levelThree:
-
-                //setContentView(R.layout.leveltwo_layout);
-                setContentView(R.layout.activity_main);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return true;
-
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_levels, menu);
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case R.id.levelOne:
+//
+//                //setContentView(R.layout.activity_main);
+//                delay-=100;
+//
+//                //Log.e(TAG, "setting was clicked");
+//                break;
+//            case R.id.levelTwo:
+//
+//                //setContentView(R.layout.leveltwo_layout);
+//                setContentView(R.layout.bw_theme);
+//                break;
+//
+//            case R.id.levelThree:
+//
+//                //setContentView(R.layout.leveltwo_layout);
+//                setContentView(R.layout.activity_main);
+//                break;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//        return true;
+//
+//    }
 
     //---------------------------------------------------
 
@@ -182,10 +181,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     numbers= numbers+10;
 
-
-                    //score.setText(scoreKeeper+"");
                 } else{
-
                     levelsHide(levels);
 
                     numbers = numbers;
@@ -194,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast toast = Toast.makeText(getApplicationContext(), "WRONG", Toast.LENGTH_SHORT);
                     toast.show();
                     response.setText("Wrong !!!");
-
 
                     final Handler handler6 = new Handler();
                     handler6.postDelayed(new Runnable() {
@@ -215,41 +210,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             response.setText("Play !!!");
 
                             reset();
-
                         }
                     }, 2500);
-
 
                     turnOffButtonss();
 
                     break;
-
-                    //numbers=0;
                 }
             }
             scoreKeeper=scoreKeeper+numbers;
 
             score.setText(scoreKeeper+"");
 
-
-
-        if (scoreKeeper >= 80) {
-            nextLevel(scoreKeeper);
+            if (scoreKeeper >= 80) {
+                nextLevel(scoreKeeper);
+            }
         }
-
-            //score.setText(scoreKeeper+"");
-
-        }
-
-
 
         if (lista2.size()==maxNumbers){
 
             reset();
         }
-
-//        score.setText(scoreKeeper);
-
     }
 
     public void reset(){
@@ -293,7 +274,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn2_1.setVisibility(View.INVISIBLE);
             btnmiddle_1.setVisibility(View.INVISIBLE);
             btnmiddle_2.setVisibility(View.INVISIBLE);
-
         }
 
         else if(num==3){
@@ -306,7 +286,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnmiddle_1.setVisibility(View.INVISIBLE);
             btnmiddle_2.setVisibility(View.INVISIBLE);
             btnmiddle_1_1.setVisibility(View.INVISIBLE);
-
         }
     }
 
@@ -341,7 +320,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnmiddle_2.setVisibility(View.VISIBLE);
 
         }
-
         else if(num==3){
             btn1.setVisibility(View.VISIBLE);
             btn2.setVisibility(View.VISIBLE);
@@ -352,13 +330,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnmiddle_1.setVisibility(View.VISIBLE);
             btnmiddle_2.setVisibility(View.VISIBLE);
             btnmiddle_1_1.setVisibility(View.VISIBLE);
-
         }
-
-
-
     }
-
 
     //############ Displays buttons for levels ############
 
@@ -565,7 +538,7 @@ public void timer(int num){
                 levelsShow(levels);
                 mp.start();
 
-//                appBkg.setBackgroundColor(getResources().getColor(R.color.mainColor));
+            //appBkg.setBackgroundColor(getResources().getColor(R.color.mainColor));
 
                 sequenceText.setText("");
                 txt="";
@@ -598,9 +571,8 @@ public void timer(int num){
                 final Runnable runnable = new Runnable() {
                     public void run() {
 
-                        // need to do tasks on the UI thread
 
-                    //***************   Here each number from the queue will be set as value into my method that has a switch that takes the incoming number and lights up
+//***************   Here each number from the queue will be set as value into my method that has a switch that takes the incoming number and lights up
                         // the button
                         if (count < maxNumbers && listarandom.size()!= 0) {
                             timer(listarandom.poll());
@@ -631,12 +603,9 @@ public void timer(int num){
 
                 //All buttons will add to the lista2 its valus to be checked with the isFull() method at the end when 4 presses have been made
 
-
             //==================  Button 1 -------------
             case R.id.btn1:
                 turnOffButtonss();
-                //clicks.stop();
-                //mp.start();
 
                 if(wait){
                     Toast toast = Toast.makeText(getApplicationContext(), "Wait", Toast.LENGTH_SHORT);
@@ -653,7 +622,6 @@ public void timer(int num){
                 if(start && lista2.size()<=lista.size()&& counter<maxNumbers){
                    // btn1.animate();
                     clicks.start();
-                    appBkg.setBackgroundColor(getResources().getColor(R.color.color1Off));
                     btn1.setBackgroundColor(getResources().getColor(R.color.color1On));
                     currentNum=1;
                     lista2.add(currentNum);
@@ -686,7 +654,6 @@ public void timer(int num){
 
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
                     clicks.start();
-                    appBkg.setBackgroundColor(getResources().getColor(R.color.color2Off));
                     btn2.setBackgroundColor(getResources().getColor(R.color.color2On));
                     currentNum=2;
                     lista2.add(currentNum);
@@ -715,7 +682,6 @@ public void timer(int num){
 
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
                     clicks.start();
-                    appBkg.setBackgroundColor(getResources().getColor(R.color.color3Off));
                     btn3.setBackgroundColor(getResources().getColor(R.color.color3On));
                     currentNum=3;
                     lista2.add(currentNum);
@@ -746,7 +712,6 @@ public void timer(int num){
 
 
                     clicks.start();
-                    appBkg.setBackgroundColor(getResources().getColor(R.color.color4Off));
                     btn4.setBackgroundColor(getResources().getColor(R.color.color4On));
                     currentNum=4;
                     lista2.add(currentNum);
@@ -762,7 +727,6 @@ public void timer(int num){
             //==================  Button 5 -------------
             case R.id.btn1_1:
                 turnOffButtonss();
-                //clicks.stop();
                 if(wait){
                     Toast toast = Toast.makeText(getApplicationContext(), "Wait", Toast.LENGTH_SHORT);
                     toast.show();
@@ -776,7 +740,6 @@ public void timer(int num){
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
 
                     clicks.start();
-                    //appBkg.setBackgroundColor(getResources().getColor(R.color.color1_1Off));
                     btn1_1.setBackgroundColor(getResources().getColor(R.color.color1_1On));
                     currentNum=5;
                     lista2.add(currentNum);
@@ -806,7 +769,6 @@ public void timer(int num){
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
 
                     clicks.start();
-                    //appBkg.setBackgroundColor(getResources().getColor(R.color.color1_1Off));
                     btn2_1.setBackgroundColor(getResources().getColor(R.color.color2_1On));
                     currentNum=6;
                     lista2.add(currentNum);
@@ -836,9 +798,7 @@ public void timer(int num){
 
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
 
-
                     clicks.start();
-                    //appBkg.setBackgroundColor(getResources().getColor(R.color.color1_1Off));
                     btnmiddle_1.setBackgroundColor(getResources().getColor(R.color.colormiddle_1));
                     currentNum=7;
                     lista2.add(currentNum);
@@ -854,7 +814,6 @@ public void timer(int num){
             //==================  Button 8 -------------
             case R.id.btnmiddle_2:
                 turnOffButtonss();
-                //clicks.stop();
                 if(wait){
                     Toast toast = Toast.makeText(getApplicationContext(), "Wait", Toast.LENGTH_SHORT);
                     toast.show();
@@ -869,7 +828,6 @@ public void timer(int num){
 
 
                     clicks.start();
-                    //appBkg.setBackgroundColor(getResources().getColor(R.color.color1_1Off));
                     btnmiddle_2.setBackgroundColor(getResources().getColor(R.color.colormiddle_2));
                     currentNum=8;
                     lista2.add(currentNum);
@@ -885,7 +843,6 @@ public void timer(int num){
             //==================  Button 9 -------------
             case R.id.btnmiddle_1_1:
                 turnOffButtonss();
-                //clicks.stop();
                 if(wait){
                     Toast toast = Toast.makeText(getApplicationContext(), "Wait", Toast.LENGTH_SHORT);
                     toast.show();
@@ -899,7 +856,6 @@ public void timer(int num){
                 if(start&& lista2.size()<=lista.size()&& counter<maxNumbers){
 
                     clicks.start();
-                    //appBkg.setBackgroundColor(getResources().getColor(R.color.color1_1Off));
                     btnmiddle_1_1.setBackgroundColor(getResources().getColor(R.color.colormiddle_1_1));
                     currentNum=9;
                     lista2.add(currentNum);
@@ -915,20 +871,8 @@ public void timer(int num){
                     break;
         }
 
-
     }
     //-------------------------------------------------
 
 }
     //#########################  END  ################################
-
-
-
-
-//###################### Missing Implementations#########3
-
-//TIMER before color sequence begins
-//-Add sound with sequence and as user clicks buttons
-//-Bugs Fixes
-
-
