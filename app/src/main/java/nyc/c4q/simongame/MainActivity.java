@@ -562,7 +562,11 @@ public void timer(int num){
                     listarandom.offer(lista.get(i));
                     txt = txt + lista.get(i)+"-";
 
-                    sequenceText.setText(txt);
+//!!!!!!PRINTS RANDOM SEQUNCE
+
+//                    sequenceText.setText(txt);
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
 
                 final Handler handler = new Handler();
