@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Decrease Speed"
+        android:id="@+id/levelOne"/>
+    <item android:title="Layout 2"
+        android:id="@+id/levelTwo"/>
+    <item android:title="Layout 1"
+        android:id="@+id/levelThree"/>
+    <item android:title="Level4" />
+    <item android:title="Level5" />
+    <item android:title="Level6" />
+</menu>
