@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int delay       =   1000;
     int numero      =   0;
     int maxNumbers  =   4;
-
+    int q=0;
     //Media player(Sounds)
     private  MediaPlayer mp;
     private  MediaPlayer clicks;
@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //all buttons sequence right or wrong
     public void isFull(){
 
+        int saved=0;
         //When the lista size is equal t counter which increases with each click then this runs
         if ( lista2.size() == counter) {
 
@@ -181,10 +182,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     numbers= numbers+10;
 
+
                     //score.setText(scoreKeeper+"");
                 } else{
 
                     levelsHide(levels);
+
                     numbers = numbers;
 
                     response.setText("Play Again");
@@ -193,31 +196,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     response.setText("Wrong !!!");
 
 
+                    final Handler handler6 = new Handler();
+                    handler6.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
 
-                    final Handler handler2 = new Handler();
-                    handler2.postDelayed(new Runnable() {
+                            levelsShow(levels);
+                        }
+                    }, 2000);
+
+                    final Handler handler5 = new Handler();
+                    handler5.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             //Do something after 100ms
 
                             response.setText("Play !!!");
-                            levelsShow(levels);
-                        }
-                    }, 2000);
-
-
 
                             reset();
+
+                        }
+                    }, 2500);
+
+
+                    turnOffButtonss();
+
                     break;
 
                     //numbers=0;
                 }
             }
-
-
             scoreKeeper=scoreKeeper+numbers;
-            //score.setText(scoreKeeper);
 
+            score.setText(scoreKeeper+"");
 
 
 
@@ -234,17 +246,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (lista2.size()==maxNumbers){
 
             reset();
-
         }
 
 //        score.setText(scoreKeeper);
 
     }
 
-
     public void reset(){
-        final Handler handler2 = new Handler();
-        handler2.postDelayed(new Runnable() {
+        final Handler handler4 = new Handler();
+        handler4.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //Do something after 100ms
@@ -253,6 +263,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }, 2000);
     }
 //-------------------------------------------------
+
+    //SET VISIBILITY  INVISIBLE
 
     public void levelsHide(int num){
 
@@ -296,11 +308,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnmiddle_1_1.setVisibility(View.INVISIBLE);
 
         }
-
-
-
     }
 
+    //SET VISIBILITY  VISIBLE
 
     public void levelsShow(int num){
 
@@ -356,59 +366,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         if (num == 80 && numero == 0) {
-
-
+            response.setText("Next Level..!!");
+            levelsHide(levels);
             final Handler handler2 = new Handler();
             handler2.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //Do something after 100ms
+                    levelsShow(levels);
 
-                    levelsHide(levels);
+                    delay -= 200;
+                    //response.setText("Click t Start");
+                    level.setText("2");
+                    btn1_1.setVisibility(View.VISIBLE);
+                    btn2_1.setVisibility(View.VISIBLE);
+                    lista.add(5);
+                    lista.add(6);
+                    maxNumbers = 6;
+                    numero++;
+                    levels=1;
+
                 }
-            }, 2000);
+            }, 1000);
 
 
-            levelsShow(levels);
 
-            delay -= 200;
-            response.setText("Click t Start");
-            level.setText("2");
-            btn1_1.setVisibility(View.VISIBLE);
-            btn2_1.setVisibility(View.VISIBLE);
-            lista.add(5);
-            lista.add(6);
-            maxNumbers = 6;
-            numero++;
-            levels=1;
         }
 
         if (num == 200 && numero == 1) {
+            response.setText("Next Level..!!");
+            levelsHide(levels);
+            final Handler handler2 = new Handler();
+            handler2.postDelayed(new Runnable() {
+             @Override
+             public void run() {
+                 levelsShow(levels);
+                 delay -= 200;
+                 response.setText("PlAY!");
+                 level.setText("3");
+                 btnmiddle_1.setVisibility(View.VISIBLE);
+                 btnmiddle_2.setVisibility(View.VISIBLE);
+                 lista.add(7);
+                 lista.add(8);
+                 maxNumbers = 8;
+                 numero++;
+                 levels=2;
+             }
+            }, 1000);
 
-            delay -= 200;
-            response.setText("PlAY!");
-            level.setText("3");
-            btnmiddle_1.setVisibility(View.VISIBLE);
-            btnmiddle_2.setVisibility(View.VISIBLE);
-            lista.add(7);
-            lista.add(8);
-            maxNumbers = 8;
-            numero++;
-            levels=2;
         }
-
-
 
         if (num == 360 && numero == 2) {
 
-            delay -= 200;
-            response.setVisibility(View.GONE);
-            level.setText("4");
-            btnmiddle_1_1.setVisibility(View.VISIBLE);
-            lista.add(9);
-            maxNumbers = 9;
-            numero++;
-            levels=3;
+
+
+
+            response.setText("Next Level..!!");
+            levelsHide(levels);
+            final Handler handler2 = new Handler();
+            handler2.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    levelsShow(levels);
+                    delay -= 200;
+                    response.setText("PlAY!");
+                    response.setVisibility(View.GONE);
+                    level.setText("4");
+                    btnmiddle_1_1.setVisibility(View.VISIBLE);
+                    lista.add(9);
+                    maxNumbers = 9;
+                    numero++;
+                    levels=3;
+                }
+            }, 1000);
+
         }
 
         }
@@ -446,29 +477,34 @@ public void timer(int num){
                 break;
 
             case 5:
+                mp.start();
                 btn1_1.setText("5");
                 btn1_1.setBackgroundColor(getResources().getColor(R.color.color1_1On));
 
                 break;
             case 6:
+                mp.start();
                 btn2_1.setText("6");
                 btn2_1.setBackgroundColor(getResources().getColor(R.color.color2_1On));
 
                 break;
 
             case 7:
+                mp.start();
                 btnmiddle_1.setText("7");
                 btnmiddle_1.setBackgroundColor(getResources().getColor(R.color.colormiddle_1));
 
                 break;
 
             case 8:
+                mp.start();
                 btnmiddle_2.setText("8");
                 btnmiddle_2.setBackgroundColor(getResources().getColor(R.color.colormiddle_2));
 
                 break;
 
             case 9:
+                mp.start();
                 btnmiddle_1_1.setText("9");
                 btnmiddle_1_1.setBackgroundColor(getResources().getColor(R.color.colormiddle_1_1));
 
@@ -524,6 +560,7 @@ public void timer(int num){
 
             //resets or starts the game
             case R.id.reset:
+                response.setText("Remeber!!");
 
                 levelsShow(levels);
                 mp.start();
@@ -575,6 +612,7 @@ public void timer(int num){
                         else{
 
                             turnOffButtonss();
+                            response.setText("Play!!");
 
                             wait=false;
                         }
@@ -586,6 +624,8 @@ public void timer(int num){
 
                 //This allows other buttons to be responsive, if user did not start the game all 4 buttons will not do anyhting
                 start=true;
+
+
 
                 break;
 
@@ -781,6 +821,7 @@ public void timer(int num){
 
             //==================  Button 7 -------------
             case R.id.btnmiddle_1:
+
                 turnOffButtonss();
                 //clicks.stop();
                 if(wait){
@@ -873,6 +914,8 @@ public void timer(int num){
             default:
                     break;
         }
+
+
     }
     //-------------------------------------------------
 
